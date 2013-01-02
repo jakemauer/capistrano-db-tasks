@@ -39,8 +39,11 @@ module Database
   class Remote < Base
     def initialize(cap_instance)
       super(cap_instance)
-      # YAML::ENGINE.yamler = 'syck'
-      @cap.run("cat #{@cap.current_path}/config/database.yml") { |c, s, d| @config = YAML.load(d)[(@cap.rails_env || 'production').to_s] }
+      @db_data = ''
+      @cap.run("cat #{@cap.current_path}/config/database.yml") do |c, s, d|
+        @db_data << d
+      end
+      @config = YAML.load(@db_data)[(@cap.rails_env || 'production').to_s]
     end
           
     def dump
@@ -78,7 +81,7 @@ module Database
       system "#{dump_cmd} | bzip2 - - > #{output_file}"
       self
     end
-    
+ 
     def upload
       remote_file = "#{@cap.current_path}/#{output_file}"
       @cap.upload output_file, remote_file
