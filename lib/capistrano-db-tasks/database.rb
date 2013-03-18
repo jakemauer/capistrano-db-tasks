@@ -1,3 +1,5 @@
+require 'yaml'
+
 module Database
   class Base 
     attr_accessor :config, :output_file

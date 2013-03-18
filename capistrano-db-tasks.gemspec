@@ -5,8 +5,8 @@ require "capistrano-db-tasks/version"
 Gem::Specification.new do |s|
   s.name        = "capistrano-db-tasks"
   s.version     = CapistranoDbTasks::VERSION
-  s.authors     = ["Sebastien Gruhier"]
-  s.email       = ["sebastien.gruhier@xilinus.com"]
+  s.authors     = ["Sebastien Gruhier, Jake Mauer"]
+  s.email       = ["sebastien.gruhier@xilinus.com, jake@jakemauer.com"]
   s.homepage    = "https://github.com/sgruhier/capistrano-db-tasks"
   s.summary     = "A collection of capistrano tasks for syncing assets and databases"
   s.description = "A collection of capistrano tasks for syncing assets and databases"
@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_development_dependency "capistrano"
+  s.add_development_dependency "pry"
 end
