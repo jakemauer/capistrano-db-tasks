@@ -30,7 +30,7 @@ module Database
     
   private
     def dump_cmd
-      "mysqldump #{credentials} #{database} --set-gtid-purged=off"
+      "mysqldump #{credentials} #{database}"
     end
 
     def import_cmd(file)
